@@ -38,7 +38,6 @@ public class ProjectConfig {
                 .authorizeHttpRequests(authz -> authz.anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider);
 
-
         return http.build();
     }
 
