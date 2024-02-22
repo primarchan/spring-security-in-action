@@ -1,0 +1,26 @@
+### 데이터베이스에 User 차가
+POST http://localhost:8080/user/add
+Content-Type: application/json
+
+{
+  "username": "danielle",
+  "password": "12345"
+}
+
+### User OTP 생성
+POST http://localhost:8080/user/auth
+Content-Type: application/json
+
+{
+  "username": "danielle",
+  "password": "12345"
+}
+
+### User OTP 검증
+POST http://localhost:8080/otp/check
+Content-Type: application/json
+
+{
+  "username": "danielle",
+  "code": "9003"
+}
