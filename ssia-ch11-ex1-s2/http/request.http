@@ -1,0 +1,13 @@
+### 첫 번째 인증단계 (사용자 이름 및 암호)
+GET http://localhost:9090/login
+username: danielle
+password: 12345
+
+### 두 번째 인증단계 (사용자 이름 및 OTP)
+GET http://localhost:9090/login
+username: danielle
+code: 2773
+
+###
+GET http://localhost:9090/test
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImRhbmllbGxlIn0.umxQ98tgEq8GKa7J2njjF7RMNtlWjIDfmwHQtAHGFmc

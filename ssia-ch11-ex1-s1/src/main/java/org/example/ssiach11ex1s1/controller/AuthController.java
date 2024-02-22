@@ -33,7 +33,6 @@ public class AuthController {
         } else {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);
         }
-
     }
 
 }

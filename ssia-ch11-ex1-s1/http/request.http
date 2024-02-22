@@ -1,4 +1,4 @@
-### 데이터베이스에 User 차가
+### 데이터베이스에 User 저장
 POST http://localhost:8080/user/add
 Content-Type: application/json
 
