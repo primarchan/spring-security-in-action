@@ -17,7 +17,7 @@ public class AuthenticationManagerConfig {
     private final OtpAuthenticationProvider otpAuthenticationProvider;
 
     @Bean
-    public AuthenticationManager authenticationManagerBean(HttpSecurity http) throws Exception {
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
                 .authenticationProvider(otpAuthenticationProvider)
                 .authenticationProvider(usernamePasswordAuthenticationProvider)

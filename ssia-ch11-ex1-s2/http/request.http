@@ -6,7 +6,7 @@ password: 12345
 ### 두 번째 인증단계 (사용자 이름 및 OTP)
 GET http://localhost:9090/login
 username: danielle
-code: 2773
+code: 9772
 
 ###
 GET http://localhost:9090/test
