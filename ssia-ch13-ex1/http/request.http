@@ -1,0 +1,6 @@
+### OAuth Token Request
+POST http://localhost:8080/oauth/token
+Authorization: Basic Y2xpZW50OnNlY3JldA==
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&username=john&password=12345&scope=read
