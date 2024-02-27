@@ -145,4 +145,12 @@
 - `Keycloak` 과 같은 솔루션이 있어도 권한 부여를 위한 맞춤형 솔루션을 절대 구현하지 않는다는 의미는 아니다. 실제 시나리오에서는 개발할 애플리케이션의 이해 관계자가 타사의 구현을 신뢰하자 않는 경우가 있으므로 가능한 모든 시나리오에 대비할 필요가 있다.
 - `OAuth 2.0 프레임워크` 를 통해 구현된 시스템에서 전역 메서드 보안을 사용할 수 있다. 이러한 시스템은 리소스 서버 수준에서 전역 메서드 보안 제한을 구현하여 리소스를 보호한다.
 - `SpEL 식`에서 특적 `OAuth 2.0 요소`를 이용해 권한 부여를 수행할 수 있다. 이러한 `SpEL 식`을 작성하려면 식을 해석할 수 있게 `OAuth2WebSecurityExpressionHandler` 를 구성해야 한다.
-- curl -XPOST "http://localhost:8080/auth/realms/master/protocol/openidconnect/token" -H "Content-Type: application/x-www-form-urlencoded" --data-urlencode "grant_type=password" --data-urlencode "username=rachel" --data-urlencode "password=12345" --data-urlencode "scope=fitnessapp" --data-urlencode "client_id=fitnessapp"
+
+##  19장. 리액티브 앱을 위한 스프링 시큐리티
+- 리액티브 애플리케이션은 데이터를 처리하고 다른 구성 요소 간에 메시지를 교환하는 다른 스타일을 이용한다, 리액티브 앱은 데이터를 작은 세그먼트로 분할하고 처리 및 교환하는 일부 상황에 더 나은 선택이다.
+- 다른 모든 애플리케이션과 마찬가지로 보안 구성을 이용해 리액티브 앱을 보호해야 한다. 스프링 시큐리티에는 비리액티브 앱과 마찬가지로 리액티브 앱에 보안 구성을 적용하기 위한 탁월한 툴 세트가 있다.
+- 리액티브 앱에서 스프링 시큐리티로 사용자 관라를 구현하려면 `ReactiveUserDetailService` 계약을 이용한다. 이 구성요소는 비리액티브 앱의 `UserDetailsService` 와 마찬가지로 앱에 사용자 세부 정보를 얻는 방법을 알려준다.
+- 리액티브 웹 애플리케이션에 엔드포인트 권한 부여 규칙을 구현하려면 `SecurityWebFilterChain` 형식의 인스턴스를 만들고 이를 스프링 컨텍스트에 추가해야 한다. `SecurityWebFilterChain` 인스턴스는 `ServerHttpSecurity 빌더` 로 만든다.
+- 일반적으로 권한 부여 구성을 정의하는 메서드의 이름은 비리액티브 앱에 이용하던 메서드의 이름과 같지만, 리액티브 용어와 관련한 약간의 차이가 있다. 예를 들어, 리액티브 앱에는 `authorizeRequests()` 가 아닌 `authorizeExchange()` 를 이용한다.
+- 스프링 시큐리티에는 메서드 수준에 권한 부여 규칠을 정의할 수 있는 리액티브 메서드 보안이라는 기능도 있으며, 이를 이용하면 리액티브 앱의 모든 걔층에 유연하게 권한 부여 규칙을 적용할 수 있다. 이 기능은 비리액티브 앱의 전역 메서드 보안과 비슷하다.
+- 하지만 아직 리액티브 메서드 보안은 전역 메서드 보안만큼 성숙한 구현이 아니다. `@PreAuthorize` 및 `@PostAuthorize 어노테이션`은 현재 이용 가능하지만, 아직 `@PreFilter` 및 `@PostFilter` 개발을 기다리고 있다.
