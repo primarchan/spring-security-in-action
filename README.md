@@ -140,4 +140,9 @@
 - 스프링 시큐리티는 스프링 데이터와 손쉽게 통합할 수 있으며 이 점을 활용해 스프링 데이터 리포지토리의 메서드에 `@PostFilter` 를 적용하는 것을 피해야 한다.
 
 ## 18장. 실전: OAuth 2.0 애플리케이션
--
+- 개발자가 반드시 맞춤형 권한 부여 서버를 직접 구현해야 하는 것은 아니며, 실제 시나리오에서는 `Keycloak` 과 같은 툴을 권한 부여 서버로 이용할 때가 많다.
+- `Keycloak` 은 `오픈 소스 ID` 및 액세스 관리 솔루션이며 사용자 관리와 권한 부여를 처리하는 탁월한 유연성을 제공한다. 맞춤형 솔루션을 직접 구현하기보다 기존의 툴을 이용하는 것이 나을 수 있다.
+- `Keycloak` 과 같은 솔루션이 있어도 권한 부여를 위한 맞춤형 솔루션을 절대 구현하지 않는다는 의미는 아니다. 실제 시나리오에서는 개발할 애플리케이션의 이해 관계자가 타사의 구현을 신뢰하자 않는 경우가 있으므로 가능한 모든 시나리오에 대비할 필요가 있다.
+- `OAuth 2.0 프레임워크` 를 통해 구현된 시스템에서 전역 메서드 보안을 사용할 수 있다. 이러한 시스템은 리소스 서버 수준에서 전역 메서드 보안 제한을 구현하여 리소스를 보호한다.
+- `SpEL 식`에서 특적 `OAuth 2.0 요소`를 이용해 권한 부여를 수행할 수 있다. 이러한 `SpEL 식`을 작성하려면 식을 해석할 수 있게 `OAuth2WebSecurityExpressionHandler` 를 구성해야 한다.
+- curl -XPOST "http://localhost:8080/auth/realms/master/protocol/openidconnect/token" -H "Content-Type: application/x-www-form-urlencoded" --data-urlencode "grant_type=password" --data-urlencode "username=rachel" --data-urlencode "password=12345" --data-urlencode "scope=fitnessapp" --data-urlencode "client_id=fitnessapp"

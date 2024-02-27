@@ -4,3 +4,9 @@ Authorization: Basic Y2xpZW50OnNlY3JldA==
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=password&username=john&password=12345&scope=read
+
+### Keycloak 으로 구현한 권한 부여 서버에 엑세스 토큰 요청
+POST http://localhost:8080/realms/master/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=password&username=rachel&password=12345&scope=fitnessapp&client_id=fitnessapp
